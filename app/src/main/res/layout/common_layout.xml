@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/duracao"
-        android:inputType="datetime"
+        android:inputType="number"
         android:textSize="22sp" />
 
     <TextView
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="6dp"
-        android:numStars="5"
+        android:numStars="10"
         android:stepSize="1.0" />
 
     <Button

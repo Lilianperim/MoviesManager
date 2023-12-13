@@ -15,17 +15,17 @@ abstract class MovieDataBase : RoomDatabase() {
     companion object {
         @Volatile
         private var INSTANCE: MovieDataBase? = null
-    }
 
-    fun getDatabase(context: Context): MovieDataBase {
-        return INSTANCE ?: synchronized(this) {
-            val instance = Room.databaseBuilder(
-                context.applicationContext,
-                MovieDataBase::class.java,
-                "moviesManager.db"
-            ).build()
-            INSTANCE = instance
-            instance
+        fun getDatabase(context: Context): MovieDataBase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    MovieDataBase::class.java,
+                    "moviesManager.db"
+                ).build()
+                INSTANCE = instance
+                instance
+            }
         }
     }
 }

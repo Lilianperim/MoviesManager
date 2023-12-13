@@ -1,8 +1,10 @@
 package br.edu.scl.ifsp.sdm.moviesmanager.data.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.Query
 import androidx.room.Update
 import br.edu.scl.ifsp.sdm.moviesmanager.data.entity.Movie
 
@@ -16,4 +18,7 @@ interface MovieDao {
 
     @Delete
     suspend fun delete(movie: Movie)
+
+    @Query("SELECT * FROM movie ORDER BY nome")
+    fun getAllMovies(): LiveData<List<Movie>>
 }
