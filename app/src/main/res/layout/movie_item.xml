@@ -27,7 +27,19 @@
                     android:textSize="22sp" />
 
                 <TextView
+                    android:id="@+id/genero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp" />
+
+                <TextView
                     android:id="@+id/ano"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/produtora"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp" />
@@ -39,11 +51,16 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/produtora"
+                    android:id="@+id/nota"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp" />
 
+                <CheckBox
+                    android:id="@+id/checkboxAssistido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filme_assistido" />
             </LinearLayout>
 
             <ImageView
