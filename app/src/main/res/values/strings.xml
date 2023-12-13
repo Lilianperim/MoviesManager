@@ -8,4 +8,10 @@
     <string name="salvar">Salvar</string>
     <string name="categoria">Selecione uma categoria:</string>
     <string name="filme_assistido">Filme assistido</string>
+    <string name="format_nome">Nome: %s</string>
+    <string name="format_genero">Gênero: %s</string>
+    <string name="format_ano">Ano: %s</string>
+    <string name="format_produtora">Produtora: %s</string>
+    <string name="format_duracao">Duração: %d min</string>
+    <string name="format_nota">Nota: %s</string>
 </resources>

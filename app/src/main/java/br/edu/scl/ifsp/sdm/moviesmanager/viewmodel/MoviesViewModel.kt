@@ -9,6 +9,7 @@ import br.edu.scl.ifsp.sdm.moviesmanager.data.entity.Movie
 import br.edu.scl.ifsp.sdm.moviesmanager.repository.MovieRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MoviesViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -25,4 +26,12 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
     fun insert(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
         repository.insertMovie(movie)
     }
+
+    fun isMovieNameExists(movieName: String, callback: (Boolean) -> Unit) =
+        viewModelScope.launch(Dispatchers.IO) {
+            val exists = repository.isMovieNameExists(movieName)
+            withContext(Dispatchers.Main) {
+                callback(exists)
+            }
+        }
 }

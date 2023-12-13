@@ -21,4 +21,7 @@ interface MovieDao {
 
     @Query("SELECT * FROM movie ORDER BY nome")
     fun getAllMovies(): LiveData<List<Movie>>
+
+    @Query("SELECT COUNT(*) FROM movie WHERE nome = :movieName")
+    fun countMoviesByName(movieName: String): Int
 }

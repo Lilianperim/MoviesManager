@@ -10,10 +10,10 @@ import kotlinx.parcelize.Parcelize
 data class Movie(
     @PrimaryKey
     val nome: String,
-    val genero: String?,
+    val genero: String,
     var ano: String,
-    var produtora: String?,
-    var duracao: Int?,
+    var produtora: String,
+    var duracao: Int,
     var nota: Float,
-    var assistido: Boolean?
+    var assistido: Boolean
 ) : Parcelable
