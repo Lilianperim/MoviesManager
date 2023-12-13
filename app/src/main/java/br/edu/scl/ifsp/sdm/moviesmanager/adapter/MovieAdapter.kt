@@ -7,7 +7,7 @@ import br.edu.scl.ifsp.sdm.moviesmanager.R
 import br.edu.scl.ifsp.sdm.moviesmanager.data.entity.Movie
 import br.edu.scl.ifsp.sdm.moviesmanager.databinding.MovieItemBinding
 
-class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(private val onMovieWatchedChanged: (Movie, Boolean) -> Unit) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     var moviesList = ArrayList<Movie>()
 
     fun updateList(newList: List<Movie>) {
@@ -32,6 +32,9 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
             duracaoView.text = context.getString(R.string.format_duracao, movie.duracao)
             notaView.text = context.getString(R.string.format_nota, movie.nota.toString())
             assistidoView.isChecked = movie.assistido
+            assistidoView.setOnCheckedChangeListener { _, isChecked ->
+                onMovieWatchedChanged(movie, isChecked)
+            }
         }
     }
 

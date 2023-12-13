@@ -34,4 +34,8 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
                 callback(exists)
             }
         }
+
+    fun updateMovie(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
+        repository.updateMovie(movie)
+    }
 }

@@ -46,7 +46,10 @@ class ListMoviesFragment : Fragment() {
         }
         val recyclerView = binding.recyclerview
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        movieAdapter = MovieAdapter()
+        movieAdapter = MovieAdapter { movie, watched ->
+            movie.assistido = watched
+            viewModel.updateMovie(movie)
+        }
         recyclerView.adapter = movieAdapter
     }
 
