@@ -8,7 +8,8 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 @Entity
 data class Movie(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
     val nome: String,
     val genero: String,
     var ano: String,

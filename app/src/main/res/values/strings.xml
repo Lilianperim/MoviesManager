@@ -14,4 +14,6 @@
     <string name="format_produtora">Produtora: %s</string>
     <string name="format_duracao">Duração: %d min</string>
     <string name="format_nota">Nota: %s</string>
+    <string name="editar_filme">Editar Filme</string>
+    <string name="remover_filme">Remover Filme</string>
 </resources>

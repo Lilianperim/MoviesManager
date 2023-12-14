@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_listMoviesFragment_to_registerFragment"
             app:destination="@id/cadastroFragment" />
+        <action
+            android:id="@+id/action_listaFilmesFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/cadastroFragment"
         android:name="br.edu.scl.ifsp.sdm.moviesmanager.ui.RegisterFragment"
         android:label="Novo Filme"
         tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="br.edu.scl.ifsp.sdm.moviesmanager.ui.DetailsFragment"
+        android:label="Detalhes"
+        tools:layout="@layout/fragment_details" />
 </navigation>

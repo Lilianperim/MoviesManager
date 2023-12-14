@@ -27,9 +27,9 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
         repository.insertMovie(movie)
     }
 
-    fun isMovieNameExists(movieName: String, callback: (Boolean) -> Unit) =
+    fun isMovieNameExists(movieName: String, movieID: Int, callback: (Boolean) -> Unit) =
         viewModelScope.launch(Dispatchers.IO) {
-            val exists = repository.isMovieNameExists(movieName)
+            val exists = repository.isMovieNameExists(movieName, movieID)
             withContext(Dispatchers.Main) {
                 callback(exists)
             }
@@ -37,5 +37,15 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
 
     fun updateMovie(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
         repository.updateMovie(movie)
+    }
+
+    fun deleteMovie(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
+        repository.deleteMovie(movie)
+    }
+
+    fun getMovieById(id: Int) {
+        viewModelScope.launch {
+            movie = repository.getMovieById(id)
+        }
     }
 }
