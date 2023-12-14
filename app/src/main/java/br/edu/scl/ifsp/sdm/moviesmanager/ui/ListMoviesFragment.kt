@@ -51,8 +51,16 @@ class ListMoviesFragment : Fragment() {
         recyclerView.adapter = movieAdapter
     }
 
-    private fun setupClick() {
-        binding.floatingButton.setOnClickListener {
+    private fun setupClick() = with(binding){
+        submitOrdernarPorNome.setOnClickListener {
+            viewModel.orderAllMoviesByNome()
+        }
+
+        submitOrdernarPorNota.setOnClickListener {
+            viewModel.orderAllMoviesByNota()
+        }
+
+       floatingButton.setOnClickListener {
             findNavController().navigate(R.id.action_listMoviesFragment_to_registerFragment)
         }
 

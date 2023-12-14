@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import br.edu.scl.ifsp.sdm.moviesmanager.R
 import br.edu.scl.ifsp.sdm.moviesmanager.data.entity.Movie
 import br.edu.scl.ifsp.sdm.moviesmanager.databinding.FragmentRegisterBinding
 import br.edu.scl.ifsp.sdm.moviesmanager.viewmodel.MoviesViewModel
@@ -19,12 +20,14 @@ class RegisterFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var viewModel: MoviesViewModel
     private var isMovieWatched: Boolean = false
-    private val movieGenreList = listOf("Romance", "Comédia", "Terror", "Drama", "Aventura")
+    private lateinit var movieGenreList: List<String>
     private var genreSelected: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
+        val movieList = resources.getStringArray(R.array.movie_genres)
+        movieGenreList = movieList.toList()
     }
 
     override fun onCreateView(
@@ -59,9 +62,7 @@ class RegisterFragment : Fragment() {
                 ).show()
                 return@setOnClickListener
             }
-            // no cadastro o filme nao tem ID cadastrado
-            val movieID = 0
-            viewModel.isMovieNameExists(nome, movieID) { exists ->
+            viewModel.isMovieNameExists(nome) { exists ->
                 if (exists) {
                     Snackbar.make(
                         binding.root,

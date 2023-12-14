@@ -18,4 +18,11 @@
     <string name="remover_filme">Remover Filme</string>
     <string name="nota_button">Nota</string>
     <string name="ordenar">Ordenar por:</string>
+    <string-array name="movie_genres">
+        <item>Romance</item>
+        <item>Comédia</item>
+        <item>Terror</item>
+        <item>Drama</item>
+        <item>Aventura</item>
+    </string-array>
 </resources>

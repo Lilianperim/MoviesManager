@@ -41,14 +41,16 @@ class DetailsFragment : Fragment() {
     private lateinit var categoriaSpinner: AppCompatSpinner
     private lateinit var notaRatingBar: AppCompatRatingBar
     private lateinit var viewModel: MoviesViewModel
+    private lateinit var movieGenreList: List<String>
     private var genreSelected: String = ""
-    private val movieGenreList = listOf("Romance", "Comédia", "Terror", "Drama", "Aventura")
     private var isMovieWatched: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
+        val movieList = resources.getStringArray(R.array.movie_genres)
+        movieGenreList = movieList.toList()
     }
 
     override fun onCreateView(
@@ -118,7 +120,6 @@ class DetailsFragment : Fragment() {
                 return when (menuItem.itemId) {
                     R.id.editMovie -> {
                         assistidoCheckBox.isEnabled = true
-                        nomeEditText.isEnabled = true
                         anoEditText.isEnabled = true
                         produtoraEditText.isEnabled = true
                         duracaoEditText.isEnabled = true
@@ -167,17 +168,7 @@ class DetailsFragment : Fragment() {
                 ).show()
                 return@setOnClickListener
             }
-            viewModel.isMovieNameExists(nome, movie.id) { exists ->
-                if (exists) {
-                    Snackbar.make(
-                        binding.root,
-                        "Um filme com esse nome já existe!",
-                        Snackbar.LENGTH_LONG
-                    ).show()
-                } else {
-                    updateMovie(nome, ano, produtora, duracao, nota)
-                }
-            }
+            updateMovie(nome, ano, produtora, duracao, nota)
         }
     }
 
