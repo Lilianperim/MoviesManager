@@ -1,79 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
-    <CheckBox
-        android:id="@+id/checkboxMovie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/filme_assistido" />
+    android:layout_height="match_parent">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editTextNome"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/nome"
-        android:textSize="22sp" />
+        android:orientation="vertical"
+        android:padding="16dp">
+        <CheckBox
+            android:id="@+id/checkboxMovie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filme_assistido" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editTextAno"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/ano_de_lancamento"
-        android:textSize="22sp" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/nome"
+            android:textSize="22sp" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editTextProdutora"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/produtora"
-        android:textSize="22sp" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextAno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/ano_de_lancamento"
+            android:textSize="22sp" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editTextDuracao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/duracao"
-        android:inputType="number"
-        android:textSize="22sp" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextProdutora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/produtora"
+            android:textSize="22sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/categoria"
-        android:textSize="16sp" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextDuracao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/duracao"
+            android:inputType="number"
+            android:textSize="22sp" />
 
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/genreSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:spinnerMode="dialog" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/categoria"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:gravity="center"
-        android:text="@string/nota"
-        android:textSize="22sp" />
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/genreSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:spinnerMode="dialog" />
 
-    <androidx.appcompat.widget.AppCompatRatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="6dp"
-        android:numStars="5"
-        android:stepSize="1.0" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@string/nota"
+            android:textSize="22sp" />
 
-    <Button
-        android:id="@+id/submitRatingButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/salvar" />
-</LinearLayout>
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="6dp"
+            android:numStars="5"
+            android:stepSize="1.0" />
+
+        <Button
+            android:id="@+id/submitRatingButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/salvar" />
+    </LinearLayout>
+</ScrollView>
