@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,6 +8,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
+
         <CheckBox
             android:id="@+id/checkboxMovie"
             android:layout_width="wrap_content"
@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nome"
+            android:maxLines="1"
             android:textSize="22sp" />
 
         <com.google.android.material.textfield.TextInputEditText
@@ -27,6 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/ano_de_lancamento"
+            android:inputType="number"
+            android:maxLines="1"
             android:textSize="22sp" />
 
         <com.google.android.material.textfield.TextInputEditText
@@ -34,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/produtora"
+            android:maxLines="1"
             android:textSize="22sp" />
 
         <com.google.android.material.textfield.TextInputEditText
@@ -42,6 +46,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/duracao"
             android:inputType="number"
+            android:maxLines="1"
             android:textSize="22sp" />
 
         <TextView
@@ -62,7 +67,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:gravity="center"
             android:text="@string/nota"
             android:textSize="22sp" />
 
@@ -73,7 +77,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginTop="6dp"
             android:numStars="5"
-            android:stepSize="1.0" />
+            android:stepSize="0.5" />
 
         <Button
             android:id="@+id/submitRatingButton"
