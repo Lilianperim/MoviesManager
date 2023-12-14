@@ -7,8 +7,11 @@ import br.edu.scl.ifsp.sdm.moviesmanager.R
 import br.edu.scl.ifsp.sdm.moviesmanager.data.entity.Movie
 import br.edu.scl.ifsp.sdm.moviesmanager.databinding.MovieItemBinding
 
-class MovieAdapter(private val onMovieWatchedChanged: (Movie, Boolean) -> Unit) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(private val onMovieWatchedChanged: (Movie, Boolean) -> Unit) :
+    RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+
     var moviesList = ArrayList<Movie>()
+    var listener: OnMovieClickListener? = null
 
     fun updateList(newList: List<Movie>) {
         moviesList.clear()
@@ -48,5 +51,19 @@ class MovieAdapter(private val onMovieWatchedChanged: (Movie, Boolean) -> Unit) 
         val duracaoView = binding.duracao
         val notaView = binding.nota
         val assistidoView = binding.checkboxAssistido
+
+        init {
+            binding.root.setOnClickListener {
+                listener?.onMovieClick(adapterPosition)
+            }
+        }
+    }
+
+    fun setClickListener(listener: OnMovieClickListener) {
+        this.listener = listener
+    }
+
+    interface OnMovieClickListener {
+        fun onMovieClick(position: Int)
     }
 }
