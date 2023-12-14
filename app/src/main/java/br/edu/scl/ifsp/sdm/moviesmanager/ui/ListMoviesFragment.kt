@@ -18,11 +18,16 @@ class ListMoviesFragment : Fragment() {
 
     private var _binding: FragmentListMoviesBinding? = null
     private val binding get() = _binding!!
-    lateinit var movieAdapter: MovieAdapter
-    lateinit var viewModel: MoviesViewModel
+    private lateinit var movieAdapter: MovieAdapter
+    private lateinit var viewModel: MoviesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
+        movieAdapter = MovieAdapter { movie, watched ->
+            movie.assistido = watched
+            viewModel.updateMovie(movie)
+        }
     }
 
     override fun onCreateView(
@@ -30,15 +35,12 @@ class ListMoviesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentListMoviesBinding.inflate(inflater, container, false)
-        binding.floatingButton.setOnClickListener {
-            findNavController().navigate(R.id.action_listMoviesFragment_to_registerFragment)
-        }
+        setupClick()
         configureRecyclerView()
         return binding.root
     }
 
     private fun configureRecyclerView() {
-        viewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
         viewModel.allMovies.observe(viewLifecycleOwner) { list ->
             list?.let {
                 movieAdapter.updateList(list as ArrayList<Movie>)
@@ -46,11 +48,26 @@ class ListMoviesFragment : Fragment() {
         }
         val recyclerView = binding.recyclerview
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        movieAdapter = MovieAdapter { movie, watched ->
-            movie.assistido = watched
-            viewModel.updateMovie(movie)
-        }
         recyclerView.adapter = movieAdapter
+    }
+
+    private fun setupClick() {
+        binding.floatingButton.setOnClickListener {
+            findNavController().navigate(R.id.action_listMoviesFragment_to_registerFragment)
+        }
+
+        val listener = object : MovieAdapter.OnMovieClickListener {
+            override fun onMovieClick(position: Int) {
+                val c = movieAdapter.moviesList[position]
+                val bundle = Bundle()
+                bundle.putInt("idMovie", c.id)
+                findNavController().navigate(
+                    R.id.action_listaFilmesFragment_to_detailsFragment,
+                    bundle
+                )
+            }
+        }
+        movieAdapter.setClickListener(listener)
     }
 
 }
