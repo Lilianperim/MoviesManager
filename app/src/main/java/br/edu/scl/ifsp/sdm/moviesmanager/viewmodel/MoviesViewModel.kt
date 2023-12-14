@@ -39,6 +39,7 @@ class MoviesViewModel(application: Application) : AndroidViewModel(application) 
         val sortedList = allMovies.value?.let { listMovie ->
             ArrayList(listMovie.sortedBy { it.nota })
         }
+        sortedList?.reverse()
         allMovies.value = sortedList!!
     }
 
