@@ -59,7 +59,9 @@ class RegisterFragment : Fragment() {
                 ).show()
                 return@setOnClickListener
             }
-            viewModel.isMovieNameExists(nome) { exists ->
+            // no cadastro o filme nao tem ID cadastrado
+            val movieID = 0
+            viewModel.isMovieNameExists(nome, movieID) { exists ->
                 if (exists) {
                     Snackbar.make(
                         binding.root,
@@ -80,7 +82,7 @@ class RegisterFragment : Fragment() {
         duracao: Int,
         nota: Float
     ) {
-        val movie = Movie(nome, genreSelected, ano, produtora, duracao, nota, isMovieWatched)
+        val movie = Movie(0, nome, genreSelected, ano, produtora, duracao, nota, isMovieWatched)
         viewModel.insert(movie)
         Snackbar.make(binding.root, "Filme salvo com sucesso!", Snackbar.LENGTH_SHORT).show()
         findNavController().popBackStack()
