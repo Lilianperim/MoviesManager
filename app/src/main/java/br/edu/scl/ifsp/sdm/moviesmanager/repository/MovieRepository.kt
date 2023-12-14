@@ -13,7 +13,7 @@ class MovieRepository(private val movieDao: MovieDao) {
 
     fun getAllMovies(): LiveData<List<Movie>> = movieDao.getAllMovies()
 
-    fun isMovieNameExists(movieName: String, movieID: Int): Boolean = movieDao.countMoviesByName(movieName, movieID) > 0
+    fun isMovieNameExists(movieName: String): Boolean = movieDao.countMoviesByName(movieName) > 0
 
     fun getMovieById(id: Int): LiveData<Movie> = movieDao.getMovieById(id)
 }
